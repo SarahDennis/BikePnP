@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:textSize="30dp"
+        android:id="@+id/instructions"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:text="Add a Bike" />
+    <EditText
+        android:textSize="20dp"
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name" />
+    <EditText
+        android:textSize="20dp"
+        android:id="@+id/phoneNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone #"
+        android:ems="10"
+        android:inputType="phone" />
+    <EditText
+        android:textSize="20dp"
+        android:id="@id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title" android:ems="60" />
+    <EditText
+        android:textSize="20dp"
+        android:id="@+id/itemDetails"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Details" />
+    <EditText
+        android:textSize="20dp"
+        android:id="@+id/price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price per Hour"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Bike" />
+</LinearLayout>
