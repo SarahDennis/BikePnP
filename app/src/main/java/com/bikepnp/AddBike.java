@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddBike extends AppCompatActivity {
@@ -47,7 +46,7 @@ public class AddBike extends AppCompatActivity {
         String phoneNumber = mPhoneNumber.getText().toString();
         String title = mTitle.getText().toString();
         String itemDetails = mItemDetails.getText().toString();
-        Double price = Double.parseDouble(mPrice.getText().toString());
+        String price = mPrice.getText().toString();
 
 
         //Add variables to server
@@ -58,9 +57,9 @@ public class AddBike extends AppCompatActivity {
         resultIntent.putExtra("details", itemDetails);
         resultIntent.putExtra("item_price", price);
 
-
+        setResult(411, resultIntent);
         //Ends the exit screen
-        //finish();
+        finish();
 
     }
 }

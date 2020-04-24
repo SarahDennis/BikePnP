@@ -48,7 +48,7 @@ public class DashboardFragment extends Fragment {
 
 
         mRecycler = (RecyclerView) root.findViewById(R.id.reycler_sell_view);
-        mRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        mRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRecycler.setAdapter(mAdapter);
 
 
@@ -57,6 +57,7 @@ public class DashboardFragment extends Fragment {
         this.mAddButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View param1View) {
                 addNewContent();
+                textView.setText("Item(s) for rent:");
             }
         });
 
@@ -68,7 +69,7 @@ public class DashboardFragment extends Fragment {
     //starts the new activity AddBike
     public void addNewContent(){
         Intent intent = new Intent(getActivity(), AddBike.class);
-        startActivityForResult(intent, 11);
+        startActivityForResult(intent, 411);
     }
 
     //******************************************************************************
@@ -77,7 +78,7 @@ public class DashboardFragment extends Fragment {
 
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode == 11){
+        if(requestCode == 411){
             //Sets all the data into tempData after the form is filled out
             tempData.setmName(data.getStringExtra("name"));
             tempData.setItemDetails(data.getStringExtra("details"));
@@ -85,12 +86,13 @@ public class DashboardFragment extends Fragment {
             tempData.setmPrice(data.getDoubleExtra("item_price", 0));
             tempData.setmTitle(data.getStringExtra("title"));
 
-            mData.add(tempData);
-
 
 
             //Makes the Adapter change after the changes
             mData.add(tempData);
+
+            //reset tempData for later
+            tempData = null;
             mAdapter.notifyDataSetChanged();
         }
     }
@@ -134,8 +136,18 @@ public class DashboardFragment extends Fragment {
         @Override
         public void onBindViewHolder(SquareHolder holder, int position) {
             holder.bindPosition(position);
-            //Set the different parts here
-            holder.mButton.setText("Hello");
+
+            //Makes sure the data isnt null
+            if (mData.get(position) != null) {
+
+                //Set the different parts here
+                holder.mButton.setText(mData.get(position).getmName() + "\n"
+                        + "Phone #: " + mData.get(position).getmPhoneNumber() + "\n\n"
+                        + mData.get(position).getmTitle() + "\n"
+                        + "Details: " + mData.get(position).getItemDetails() + "\n"
+                        + "$" + mData.get(position).getmPrice() + " per hour");
+            }
+
         }
 
         @Override

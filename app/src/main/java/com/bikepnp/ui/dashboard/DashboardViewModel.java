@@ -8,7 +8,7 @@ public class DashboardViewModel extends ViewModel {
     private MutableLiveData<String> mText = new MutableLiveData();
 
     public DashboardViewModel() {
-        this.mText.setValue("No current items for sale");
+        this.mText.setValue("No current items for rent");
     }
 
     public LiveData<String> getText() {
